@@ -1,0 +1,62 @@
+﻿<Window x:Class="ErikProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ErikProject"
+        mc:Ignorable="d"
+        Title="Учёт отпусков сотрудников" Height="450" Width="800"
+        Background="#FF403939">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Сотрудники" FontWeight="Bold">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="5">
+                        <Button Content="Добавить" Width="80" Margin="5" Click="AddWorker_Click" BorderBrush="White" Background="#FF22DC2D" Foreground="White"/>
+                        <Button Content="Изменить" Width="80" Margin="5" Click="EditWorker_Click" BorderBrush="White" Background="#FFF19B00" Foreground="White"/>
+                        <Button Content="Удалить" Width="80" Margin="5" Click="DeleteWorker_Click" BorderBrush="White" Background="#FFDC0909" Foreground="White"/>
+                    </StackPanel>
+
+                    <DataGrid x:Name="EmployeesGrid" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" Background="#FFC0D4D4">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding EmployeeID}" Width="Auto"/>
+                            <DataGridTextColumn Header="ФИО" Binding="{Binding FullName}" Width="*"/>
+                            <DataGridTextColumn Header="Должность" Binding="{Binding Position}" Width="*"/>
+                            <DataGridTextColumn Header="Отдел" Binding="{Binding Department}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Отпуска" FontWeight="Bold">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="5">
+                        <Button Content="Добавить" Width="80" Margin="5" Click="AddHoliday_Click" Background="#FF22DC2D" Foreground="White"/>
+                        <Button Content="Изменить" Width="80" Margin="5" Click="EditHoliday_Click" Background="#FFF19B00" Foreground="White"/>
+                        <Button Content="Удалить" Width="80" Margin="5" Click="DeleteHoliday_Click" Background="#FFDC0909" Foreground="White"/>
+                    </StackPanel>
+
+                    <DataGrid x:Name="VacationsGrid" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" Background="#FFC0D4D4">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding VacationID}" Width="Auto"/>
+                            <DataGridTextColumn Header="Сотрудник" Binding="{Binding EmployeeName}" Width="*"/>
+                            <DataGridTextColumn Header="Начало" Binding="{Binding StartDate, StringFormat={}{0:dd.MM.yyyy}}" Width="*"/>
+                            <DataGridTextColumn Header="Конец" Binding="{Binding EndDate, StringFormat={}{0:dd.MM.yyyy}}" Width="*"/>
+                            <DataGridTextColumn Header="Тип" Binding="{Binding VacationType}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

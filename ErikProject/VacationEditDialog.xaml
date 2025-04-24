@@ -1,0 +1,50 @@
+﻿<Window x:Class="ErikProject.VacationEditDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ErikProject"
+        mc:Ignorable="d"
+        Title="Редактирование отпуска" Height="300" Width="400"
+        WindowStartupLocation="CenterOwner" Background="#FF031033">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Сотрудник:" Grid.Row="0" Margin="0 0 0 5" FontWeight="Bold" Foreground="White"/>
+        <ComboBox x:Name="EmployeeComboBox" Grid.Row="1" Margin="0 0 0 10"
+                  DisplayMemberPath="FullName"/>
+
+        <TextBlock Text="Дата начала:" Grid.Row="2" Margin="0 0 0 5" FontWeight="Bold" Foreground="White"/>
+        <DatePicker x:Name="StartDatePicker" Grid.Row="3" Margin="0 0 0 10"/>
+
+        <TextBlock Text="Дата окончания:" Grid.Row="4" Margin="0 0 0 5" FontWeight="Bold" Foreground="White"/>
+        <DatePicker x:Name="EndDatePicker" Grid.Row="5" Margin="0 0 0 10"/>
+
+        <TextBlock Text="Тип отпуска:" Grid.Row="6" Margin="0 0 0 5"/>
+        <ComboBox x:Name="TypeComboBox" Grid.Row="7" Margin="0 0 0 20">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="#FFF0F0F0"/>
+                    <GradientStop Color="#FF14BEDB" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+            <ComboBoxItem>Ежегодный</ComboBoxItem>
+            <ComboBoxItem>Без сохранения зарплаты</ComboBoxItem>
+            <ComboBoxItem>Учебный</ComboBoxItem>
+            <ComboBoxItem>Декретный</ComboBoxItem>
+        </ComboBox>
+
+        <StackPanel Grid.Row="8" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Сохранить" Width="80" Click="Save_Click" Background="#FF22DC2D" FontWeight="Bold" Foreground="White" />
+            <Button Content="Отмена" Width="80" Click="Cancel_Click" Background="#FFDC0909" FontWeight="Bold" Foreground="White"/>
+        </StackPanel>
+    </Grid>
+</Window>
